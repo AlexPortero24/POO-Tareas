@@ -1,26 +1,36 @@
+# Importamos lo necesario para crear clases abstractas
 from abc import ABC, abstractmethod
 
-# Creamos una clase abstracta
+# Definimos una clase abstracta llamada Animal
 class Animal(ABC):
+    # Declaramos un método abstracto que las subclases deberán implementar
     @abstractmethod
     def hacer_sonido(self):
-        # Método abstracto: debe ser implementado por las subclases
+        # Este método no tiene implementación aquí
+        # Solo actúa como una "regla" que obliga a las subclases a definirlo
         pass
 
-# Clase que hereda de Animal
+# Creamos una subclase llamada Perro que hereda de Animal
 class Perro(Animal):
+    # Implementamos el método abstracto
     def hacer_sonido(self):
+        # Aquí especificamos qué sonido hace el perro
         print("El perro dice: ¡Guau!")
 
-# Clase que hereda de Animal
+# Creamos otra subclase llamada Gato que también hereda de Animal
 class Gato(Animal):
+    # También implementamos el método hacer_sonido, de forma específica para el gato
     def hacer_sonido(self):
         print("El gato dice: ¡Miau!")
 
-# Creamos instancias
-perro = Perro()
-gato = Gato()
+# Si intentáramos hacer esto:
+# animal = Animal()  ← Esto daría error porque no se puede instanciar una clase abstracta
 
-# Usamos los métodos abstractos implementados
-perro.hacer_sonido()
-gato.hacer_sonido()
+# Ahora creamos objetos (instancias) de las clases concretas
+perro = Perro()  # Creamos un objeto de la clase Perro
+gato = Gato()    # Creamos un objeto de la clase Gato
+
+# Llamamos al método hacer_sonido de cada objeto
+# Cada uno ejecutará su propia versión del método
+perro.hacer_sonido()  # Imprime: El perro dice: ¡Guau!
+gato.hacer_sonido()   # Imprime: El gato dice: ¡Miau!
