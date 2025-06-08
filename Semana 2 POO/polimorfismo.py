@@ -1,23 +1,35 @@
-class Ave:
+# Clase base llamada Animal
+class Animal:
+    # Método hablar que puede ser sobrescrito por clases hijas
     def hablar(self):
-        print("Algunas aves hacen sonidos.")
+        print("Algunos animales emiten sonidos.")  # Mensaje genérico para animales
 
-class Loro(Ave):
+# Clase hija llamada Perro que hereda de Animal
+class Perro(Animal):
+    # Sobrescribimos el método hablar
     def hablar(self):
-        print("El loro dice: ¡Hola!")
+        print("El perro dice: ¡Guau!")  # Comportamiento específico del perro
 
-class Canario(Ave):
+# Clase hija llamada Vaca que también hereda de Animal
+class Vaca(Animal):
+    # Sobrescribimos el método hablar
     def hablar(self):
-        print("El canario canta: ¡Pío pío!")
+        print("La vaca dice: ¡Muuu!")  # Comportamiento específico de la vaca
 
-# Función polimórfica
-def hacer_hablar(ave):
-    ave.hablar()
+# Función polimórfica que recibe cualquier objeto Animal
+def hacer_hablar(animal):
+    # Llama al método hablar del objeto recibido, sin importar su clase exacta
+    animal.hablar()  # Aquí se aplica polimorfismo: el mismo método se comporta distinto según el objeto
 
-# Crear objetos
-mi_loro = Loro()
-mi_canario = Canario()
+# Crear objeto de la clase Perro
+mi_perro = Perro()
 
-# Usar polimorfismo
-hacer_hablar(mi_loro)
-hacer_hablar(mi_canario)
+# Crear objeto de la clase Vaca
+mi_vaca = Vaca()
+
+# Usar la función polimórfica con un perro
+hacer_hablar(mi_perro)  # Salida: El perro dice: ¡Guau!
+
+# Usar la función polimórfica con una vaca
+hacer_hablar(mi_vaca)   # Salida: La vaca dice: ¡Muuu!
+
